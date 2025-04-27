@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZestyCart-Cart</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cart.css">
+
+</head>
+
+<body>
+    <!-- nav bar --- here -->
+    <nav class="navbar">
+        <div class="logo">ZestyCart</div>
+        <ul class="nav-links" id="navlinks">
+            <li><a href="../index.html">Home</a> </li>
+            <li><a href="menu.html">menu</a> </li>
+            <li><a href="cart.html">cart</a> </li>
+            <li><a href="contact.html">contact</a> </li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <!-- ------------- -->
+    <main>
+        <div class="container">
+            <h1>your cart</h1>
+            <div id="cart-items">
+
+                <div id="cart-total">
+                    Total : Rs 0
+                </div>
+
+
+
+            </div>
+            <div class="end">
+                <button id="order_bttn">Order Now !</button>
+                <button id="clear_bttn">clear the cart</button>
+                <button id="receipt" style="display: none;">download reciept</button>
+                <p id="msg" style="display: none;"></p>
+            </div>
+
+        </div>
+
+
+    </main>
+
+    <footer>
+        <div class="footer">
+          <p>&copy; 2025 ZestyCart. All Rights reserved</p>
+          <div class="social-icons">
+            <a href="#" target="_blank" ><img src="instagram.png" alt="instagram"></a>
+            <a href="#" target="_blank" ><img src="facebook.png" alt="facebook"></a>
+            <a href="#" target="_blank" ><img src="twitter.png" alt="twitter"></a>
+          </div>
+          <p>Designed and developed by Haraprasad Mahapatra</p>
+          <p><a href="#"> Click here to Connect </a></p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        window.onload = function () {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartcontainer = document.getElementById("cart-items");
+            let total = 0;
+
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+
+                cartcontainer.innerHTML += `
+                <div class="cart-item">
+                    <img src="../assets/${item.img}">
+                    <div class="item-info">
+                    <h3>${item.name}</h3>
+                    <p>Price:${item.price}</p>
+                    <p>quantity:${item.quantity}</p>
+                    <p>Subtotal:${item.price * item.quantity}</p>
+                    </div>
+                    
+                    
+                </div>
+                <hr/>
+                `
+            });
+            document.getElementById("cart-total").innerText = "Total : Rs " + total;
+        }
+
+        document.getElementById('clear_bttn').addEventListener("click", function () {
+            console.log("working....")
+            localStorage.removeItem('cart');
+            alert('cart cleared');
+            location.reload();
+        })
+
+        document.getElementById('order_bttn').addEventListener("click",function (){
+            document.getElementById('msg').style.display="inline-block"
+            document.getElementById('msg').innerText="Order placed succesfully , You can now download your reciept";
+            document.getElementById('receipt').style.display="inline-block";
+            document.getElementById('order_bttn').disabled=true;
+        })
+
+        document.getElementById('receipt').addEventListener("click", function () {
+            // const { jsPDF } = window.jsPDF;
+            const doc = new window.jspdf.jsPDF();
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            let y = 20;
+            doc.setFontSize(22);
+            doc.text("ZestyCart", 105, y, null, null, "center");
+
+            y += 10;
+            doc.setFontSize(14);
+            doc.text(` Order receipt`, 105, y, null, null, "center");
+
+            y += 10;
+            doc.setFontSize(10);
+            let date = new Date().toLocaleString();
+
+            doc.text(`Date:${date}`, 105, y, null, null, "center");
+
+            y += 10;
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                doc.setFontSize(12);
+                doc.text(`Item ${index + 1} : ${item.name}`, 20, y);
+                doc.text(`Price : ${item.price}`,20,y+6);
+                doc.text(`Quantity:${item.quantity}`,20,y+6+6);
+                doc.text(`Subtotal : ${item.price*item.quantity}`,20,y+6+6+6);
+                total+=item.price*item.quantity;
+                y=y+38;
+            })
+            doc.setLineWidth(0.5);
+            doc.line(20,y,190,y);
+            y+=10;
+            doc.setFontSize(15);
+            doc.text(`Total Amount : Rs ${total}`,20,y);
+            y+=30;
+
+            doc.setFontSize(14);
+            doc.text("thankyou for Ordering with ZestyCart!!",105,y,null,null,"center");
+            doc.save("ZestyCart-Receipt");
+
+            localStorage.removeItem('cart');
+            // window.reload();
+
+        })
+    </script>
+</body>
+
+</html>

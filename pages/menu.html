@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZestyCart-Menu</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/menu.css">
+
+</head>
+
+<body>
+    <!-- nav bar here -->
+    <nav class="navbar">
+        <div class="logo">ZestyCart</div>
+        <ul class="nav-links" id="navlinks">
+            <li><a href="../index.html">Home</a> </li>
+            <li><a href="menu.html">menu</a> </li>
+            <li><a href="cart.html">cart</a> </li>
+            <li><a href="contact.html">contact</a> </li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <!-- --------- -- ------- -->
+    <main>
+        <h1 class="menu-title"> Menu--</h1>
+        <div class="menu-container">
+
+        </div>
+        <div class="proceed">
+            <button id="proceed_bttn"><a href="cart.html"> Proceed->>>></a></button>
+        </div>
+        <div class="chef-section">
+            <img src="../assets/nikita.png" alt="Nikita Kotian" class="chef-image">
+            <div class="chef-info">
+                <h2>Meet Our Chef</h2>
+                <p>Chef Nikita Kotian , brings passion , creativity and years of experiance to every dish</p>
+                <p>Known for blending traditional flavours with modern twists , she ensures every meal at ZestyCart is unforgettable</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+          <p>&copy; 2025 ZestyCart. All Rights reserved</p>
+          <div class="social-icons">
+            <a href="#" target="_blank" ><img src="instagram.png" alt="instagram"></a>
+            <a href="#" target="_blank" ><img src="facebook.png" alt="facebook"></a>
+            <a href="#" target="_blank" ><img src="twitter.png" alt="twitter"></a>
+          </div>
+          <p>Designed and developed by Haraprasad Mahapatra</p>
+          <p><a href="#"> Click here to Connect </a></p>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+    <script>
+        fetch('menu.json').then(res => res.json())
+            .then(data => {
+                const menucontainer = document.getElementsByClassName('menu-container')[0];
+
+
+                data.forEach(category => {
+                    const section = document.createElement('section')
+                    section.classList.add('menu-section');
+                    const heading = document.createElement('h2');
+                    heading.classList.add('category')
+                    heading.textContent = category.category
+                    section.appendChild(heading);
+                    const itemsgrid = document.createElement('div');
+                    itemsgrid.classList.add('items-grid')
+                    category.items.forEach(item => {
+                        const card = document.createElement('div')
+                        card.classList.add('menu-card')
+                        card.innerHTML = `<img src="../assets/${item.img}"" alt="${item.name}" <b><h3>${item.name}</h3></b> <b><p>${item.price}</p></b>`
+                        const add = document.createElement('div');
+                        // add.classList.add("add_button")
+                        // add.innerHTML="<button>Add to Cart</button"
+                        // card.appendChild(add);
+                        const button = document.createElement('button');
+                        button.textContent = 'Add to cart';
+                        button.classList.add("add_button");
+                        // button.dataset.id = item.id;
+                        // button.dataset.name = item.name;
+                        // button.dataset.price = item.price;
+                        // button.dataset.img = item.img;
+
+                        button.addEventListener("click", (e) => {
+                             
+                        addtocart({
+                                id: item.id,
+                                name: item.name,
+                                price: parseFloat(item.price),
+                                img: item.img
+                            });
+                        });
+                        add.appendChild(button);
+                        card.appendChild(add);
+                        itemsgrid.appendChild(card);
+                    })
+                    section.appendChild(itemsgrid);
+                    menucontainer.appendChild(section);
+                })
+            })
+
+        //for temporary use ---- using local storage --
+        //temporary block starts from here ---------
+
+        function addtocart(item) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            //it will search in localstorage for any item named cart , if nnot found , then it will create a empty item named cart
+
+            const existingitem = cart.find(i => i.id === item.id)
+            //this will search for any food dish with id (two possible case - not exiting , existing )---
+
+            //if already exist , it will add the quantity 
+            if (existingitem) {
+                existingitem.quantity += 1;
+            }
+            // if not , it will add the item in the object cart 
+            // here ...item - means - all the data in item (item.id , item.name etc...) with quantity
+            else {
+                cart.push({ ...item, quantity: 1 });
+
+            }
+            //local storage - do not store object - it only stores string format
+            // so , json.stringify - convert it into string 
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${item.name} added to the cart`)
+        }
+
+
+
+    </script>
+</body>
+
+</html>

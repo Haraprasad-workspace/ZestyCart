@@ -1,0 +1,168 @@
+[
+    {
+        "category":"Indian",
+        "items":[
+            {
+                "id":"1",
+                "name":"Tawa Roti",
+                "price":"20",
+                "img":"roti.jpg"
+            },
+            {
+                "id":"2",
+                "name":"Tadka Daal",
+                "price":"170",
+                "img":"tadka_daal.jpg"
+
+            },
+            {
+                "id":"3",
+                "name":"Pulaav Handi",
+                "price":"20",
+                "img":"pullav_handi.jpg"
+            }
+        ]
+    },
+    
+    {
+        "category":"South-Indian",
+        "items":[
+            {
+                "id":"4",
+                "name":"Dosa - Sambhar",
+                "price":"120",
+                "img":"dosa.jpg"
+            },
+            {
+                "id":"5",
+                "name":"Idli-Sambhar",
+                "price":"100",
+                "img":"idli.jpg"
+            }
+        ]
+    },
+    {
+        "category":"chinese",
+        "items":[
+            {
+                "id":"6",
+                "name":"Noodles",
+                "price":"100",
+                "img":"noodles.jpg"
+            },
+            {
+                "id":"7",
+                "name":"soup",
+                "price":"150",
+                "img":"soup.jpg"
+            }
+        ]
+    },
+    {
+        "category":"beverages",
+        "items":[
+            {
+                "id":"8",
+                "name":"sprite",
+                "price":"20",
+                "img":"sprite.jpg"
+            },
+            {
+                "id":"9",
+                "name":"coco-cola",
+                "price":"20",
+                "img":"cococola.jpg"
+            }
+            ,
+            {
+                "id":"10",
+                "name":"Mountain-dew",
+                "price":"20",
+                "img":"mountain_dew.jpg"
+            }
+        ]
+
+    },
+    {
+        "category":"Italian",
+        "items":[
+            {
+                "id":"11",
+                "name":"Pasta",
+                "price":"120",
+                "img":"pasta.jpg"
+            },
+            {
+                "id":"12",
+                "name":"Potato Sticks",
+                "price":"100",
+                "img":"potato_sticks.jpg"
+            },
+            {
+                "id":"13",
+                "name":"Pancake",
+                "price":"220",
+                "img":"pancake.jpg"
+            }
+        ]
+    },
+    {
+        "category":"cakes",
+        "items":[
+            {
+                "id":"14",
+                "name":"Chocolate Cake",
+                "price":"180",
+                "img":"cake.jpg"
+            },
+            {
+                "id":"15",
+                "name":"Pastry",
+                "price":"80",
+                "img":"pastry.jpg"
+            }
+        ]
+    },
+    {
+        "category":"Special Dishes",
+        "items":[
+            {
+                "id":"15",
+                "name":"cheeze Mysore Masala Dosa",
+                "price":"190",
+                "img":"masala_dosa.jpg"
+            },
+            {
+                "id":"16",
+                "name":"Margherita pizza",
+                "price":"240",
+                "img":"margherita_pizza.jpg"
+            },
+            {
+                "id":"17",
+                "name":"Red Italian pasta",
+                "price":"290",
+                "img":"red_italian_pasta.jpg"
+            },
+            {
+                "id":"18",
+                "name":"Paneer chilli",
+                "price":"180",
+                "img":"panner_chilli.jpg"
+            },
+            {
+                "id":"19",
+                "name":"veg cuttlet",
+                "price":"160",
+                "img":"veg_cuttlet.jpg"
+            },
+            {
+                "id":"20",
+                "name":"paneer + ladyfinger sabzi",
+                "price":"10000",
+                "img":"paneer_bhindi.jpg"
+            }
+        ]
+    }
+
+]

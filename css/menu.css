@@ -1,0 +1,107 @@
+main{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    
+}
+.menu-section{
+    margin:2rem 0;
+
+}
+.items-grid{
+    display:flex;
+    flex-wrap: wrap;
+    gap:1rem;
+
+}
+.category{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+.menu-card{
+    border:2px solid #ddd;
+    padding:1rem;
+    width:200px;
+    text-align:center;
+    font-size: large;
+    margin-top:10px ;
+
+}
+.menu-card img{
+    width:100%;
+    height:180px;
+    object-fit: cover;
+    border-radius:8px;
+}
+.add_button{
+    border:none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color:yellow;
+    background: none;
+    cursor: pointer;
+}
+.proceed{
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+.proceed button{
+    border: 1px solid rgb(242, 241, 241);
+    background-color:rgb(19, 19, 19) ;
+    padding: 10px;
+    border-radius: 8px;
+    
+}
+.proceed a{
+    color: yellow;
+    text-decoration: none;
+
+}
+
+.chef-section{
+    padding:50px 70px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+.chef-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+}
+.chef-image{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.chef-info{
+    max-width: 600px;
+}
+.chef-info h2{
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.chef-info p{
+    font-size: 16px;
+    color: #555;
+
+}
+
+@media(min-width:768px){
+    .chef-container{
+        flex-direction: row;
+        justify-content: center;
+        text-align: left;
+
+    }
+    .chef-info{
+        padding-left: 30px;
+    }
+}
