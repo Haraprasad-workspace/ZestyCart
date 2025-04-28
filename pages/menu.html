@@ -35,11 +35,11 @@
         <div class="proceed">
             <button id="proceed_bttn"><a href="cart.html"> Proceed->>>></a></button>
         </div>
-        <div class="chef-section">
-            <img src="../assets/nikita.png" alt="Nikita Kotian" class="chef-image">
+        <div class="chef-section" style="display: none;">
+            <img src="" alt="Nikita Kotian" class="chef-image">
             <div class="chef-info">
                 <h2>Meet Our Chef</h2>
-                <p>Chef Nikita Kotian , brings passion , creativity and years of experiance to every dish</p>
+                <p>Chef  , brings passion , creativity and years of experiance to every dish</p>
                 <p>Known for blending traditional flavours with modern twists , she ensures every meal at ZestyCart is unforgettable</p>
             </div>
         </div>
@@ -48,28 +48,42 @@
         <div class="footer">
           <p>&copy; 2025 ZestyCart. All Rights reserved</p>
           <div class="social-icons">
-            <a href="#" target="_blank" ><img src="instagram.png" alt="instagram"></a>
-            <a href="#" target="_blank" ><img src="facebook.png" alt="facebook"></a>
-            <a href="#" target="_blank" ><img src="twitter.png" alt="twitter"></a>
+            <a href="www.instagram.com" target="_blank" ><img src="../assets/instagram.jpeg" alt="instagram"></a>
+            <a href="www.facebook.com" target="_blank" ><img src="../assets/facebook.jpeg" alt="facebook"></a>
+            <a href="www.twitter.com" target="_blank" ><img src="../assets/twitter.png" alt="twitter"></a>
           </div>
           <p>Designed and developed by Haraprasad Mahapatra</p>
-          <p><a href="#"> Click here to Connect </a></p>
+          <p><a href="https://www.linkedin.com/in/haraprasad-mahapatra-549a1a280/"> Click here to Connect </a></p>
         </div>
     </footer>
     <script src="../js/main.js"></script>
     <script>
+        //fetch is js function while fetches a file or api
+        //.then() - takes the res and for every response , it gives in json format
         fetch('menu.json').then(res => res.json())
             .then(data => {
+                
+                //data is the parsed json array .
+                //this line takes the first element with class name 'menu-container'
+
                 const menucontainer = document.getElementsByClassName('menu-container')[0];
 
 
+                //for each data , this is loop is executed .
+
                 data.forEach(category => {
+                    //category is like the name of the array 
+                    //for each data , a section is created .
                     const section = document.createElement('section')
                     section.classList.add('menu-section');
+                    //for this section , a heading is created 
                     const heading = document.createElement('h2');
                     heading.classList.add('category')
+                    //the heading should contain the array.category string ---
                     heading.textContent = category.category
-                    section.appendChild(heading);
+                    section.appendChild(heading); //the heading is then appended in the heading 
+
+                
                     const itemsgrid = document.createElement('div');
                     itemsgrid.classList.add('items-grid')
                     category.items.forEach(item => {
