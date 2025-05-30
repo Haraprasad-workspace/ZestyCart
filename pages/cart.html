@@ -69,10 +69,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="../js/main.js"></script>
     <script>
+        let total = 0;
         window.onload = function () {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             let cartcontainer = document.getElementById("cart-items");
-            let total = 0;
+            
 
             cart.forEach(item => {
                 total += item.price * item.quantity;
@@ -103,14 +104,24 @@
         })
 
         document.getElementById('order_bttn').addEventListener("click", function () {
-            document.getElementById('msg').style.display = "inline-block"
-            document.getElementById('msg').innerText = "Order placed succesfully , You can now download your reciept";
-            document.getElementById('receipt').style.display = "inline-block";
-            document.getElementById('order_bttn').disabled = true;
+            console.log(total)
+            if (total == 0) {
+                document.getElementById('msg').style.display = "inline-block"
+                document.getElementById('msg').style.color = "red"
+                document.getElementById('msg').innerText = "Cart is empty , please add items to cart ";
+                document.getElementById('order_bttn').disabled = true;
+
+            }
+            else {
+                document.getElementById('msg').style.display = "inline-block"
+                document.getElementById('msg').innerText = "Order placed succesfully , You can now download your reciept";
+                document.getElementById('receipt').style.display = "inline-block";
+                document.getElementById('order_bttn').disabled = true;
+            }
+
         })
 
         document.getElementById('receipt').addEventListener("click", function () {
-            // const { jsPDF } = window.jsPDF;
             const doc = new window.jspdf.jsPDF();
 
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -153,7 +164,7 @@
             doc.save("ZestyCart-Receipt");
 
             localStorage.removeItem('cart');
-            // window.reload();
+           
 
         })
     </script>
