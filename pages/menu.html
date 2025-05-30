@@ -7,6 +7,9 @@
     <title>ZestyCart-Menu</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/menu.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
 
@@ -39,21 +42,22 @@
             <img src="" alt="Nikita Kotian" class="chef-image">
             <div class="chef-info">
                 <h2>Meet Our Chef</h2>
-                <p>Chef  , brings passion , creativity and years of experiance to every dish</p>
-                <p>Known for blending traditional flavours with modern twists , she ensures every meal at ZestyCart is unforgettable</p>
+                <p>Chef , brings passion , creativity and years of experiance to every dish</p>
+                <p>Known for blending traditional flavours with modern twists , she ensures every meal at ZestyCart is
+                    unforgettable</p>
             </div>
         </div>
     </main>
     <footer>
         <div class="footer">
-          <p>&copy; 2025 ZestyCart. All Rights reserved</p>
-          <div class="social-icons">
-            <a href="www.instagram.com" target="_blank" ><img src="../assets/instagram.jpeg" alt="instagram"></a>
-            <a href="www.facebook.com" target="_blank" ><img src="../assets/facebook.jpeg" alt="facebook"></a>
-            <a href="www.twitter.com" target="_blank" ><img src="../assets/twitter.png" alt="twitter"></a>
-          </div>
-          <p>Designed and developed by Haraprasad Mahapatra</p>
-          <p><a href="https://www.linkedin.com/in/haraprasad-mahapatra-549a1a280/"> Click here to Connect </a></p>
+            <p>&copy; 2025 ZestyCart. All Rights reserved</p>
+            <div class="social-icons">
+                <a href="www.instagram.com" target="_blank"><img src="../assets/instagram.jpeg" alt="instagram"></a>
+                <a href="www.facebook.com" target="_blank"><img src="../assets/facebook.jpeg" alt="facebook"></a>
+                <a href="www.twitter.com" target="_blank"><img src="../assets/twitter.png" alt="twitter"></a>
+            </div>
+            <p>Designed and developed by Haraprasad Mahapatra</p>
+            <p><a href="https://www.linkedin.com/in/haraprasad-mahapatra-549a1a280/"> Click here to Connect </a></p>
         </div>
     </footer>
     <script src="../js/main.js"></script>
@@ -62,7 +66,7 @@
         //.then() - takes the res and for every response , it gives in json format
         fetch('menu.json').then(res => res.json())
             .then(data => {
-                
+
                 //data is the parsed json array .
                 //this line takes the first element with class name 'menu-container'
 
@@ -83,7 +87,7 @@
                     heading.textContent = category.category
                     section.appendChild(heading); //the heading is then appended in the heading 
 
-                
+
                     const itemsgrid = document.createElement('div');
                     itemsgrid.classList.add('items-grid')
                     category.items.forEach(item => {
@@ -103,8 +107,8 @@
                         // button.dataset.img = item.img;
 
                         button.addEventListener("click", (e) => {
-                             
-                        addtocart({
+
+                            addtocart({
                                 id: item.id,
                                 name: item.name,
                                 price: parseFloat(item.price),

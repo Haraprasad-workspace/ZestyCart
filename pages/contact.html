@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZestyCart-Contact</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/contact.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+       
+    </style>
+</head>
+
+<body>
+    <!-- nav bar here -->
+    <nav class="navbar">
+        <div class="logo">ZestyCart</div>
+        <ul class="nav-links" id="navlinks">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <main>
+        <div class="box">
+            <h3>Call us - +91 9537362412</h3>
+            <h3>Email us - <a href="mailto:haraprasadmahapatra223@gmail.com">haraprasadmahapatra223@gmail.com</a></h3>
+            <h3>Reach us</h3>
+            <div class="map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d238133.18800900166!2d72.65747318239129!3d21.159120355102836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e59411d1563%3A0xfe4558290938b042!2sSurat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1748604447516!5m2!1sen!2sin"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <br>
+            <hr><br>
+            <h2>Customer Review</h2>
+            <div class="form">
+                <form id="reviewForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required />
+                    <br><br>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required />
+                    <br><br>
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" pattern="[0-9]{10}" required />
+                    <br><br>
+                    <label for="message">Review:</label><br>
+                    <textarea id="message" rows="5" cols="50" placeholder="Place your message here--"
+                        required></textarea>
+                    <br><br>
+                    <input type="submit" id="submit" value="Submit">
+                </form>
+                <div class="confirmation" id="confirmationMsg">Thank you! Your review has been submitted successfully.
+                </div>
+            </div>
+        </div>
+        </main>
+
+        <footer>
+            <div class="footer">
+                <p>&copy; 2025 ZestyCart. All Rights reserved</p>
+                <div class="social-icons">
+                    <a href="www.instagram.com" target="_blank"><img src="../assets/instagram.jpeg" alt="instagram"></a>
+                    <a href="www.facebook.com" target="_blank"><img src="../assets/facebook.jpeg" alt="facebook"></a>
+                    <a href="www.twitter.com" target="_blank"><img src="../assets/twitter.png" alt="twitter"></a>
+                </div>
+                <p>Designed and developed by Haraprasad Mahapatra</p>
+                <p><a href="https://www.linkedin.com/in/haraprasad-mahapatra-549a1a280/"> Click here to Connect </a></p>
+            </div>
+        </footer>
+        <script src="../js/main.js">
+
+  </script>
+    
+    <script>
+        const form = document.getElementById("reviewForm");
+        const confirmationMsg = document.getElementById("confirmationMsg");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            if (name === "" || email === "" || phone === "" || message === "") {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            if (!/^\d{10}$/.test(phone)) {
+                alert("Please enter a valid 10-digit phone number.");
+                return;
+            }
+
+            // If all validations pass
+            confirmationMsg.style.display = "block";
+            form.reset();
+        });
+    </script>
+</body>
+
+</html>

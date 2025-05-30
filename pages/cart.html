@@ -7,6 +7,9 @@
     <title>ZestyCart-Cart</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/cart.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
 
@@ -53,14 +56,14 @@
 
     <footer>
         <div class="footer">
-          <p>&copy; 2025 ZestyCart. All Rights reserved</p>
-          <div class="social-icons">
-            <a href="www.instagram.com" target="_blank" ><img src="../assets/instagram.jpeg" alt="instagram"></a>
-            <a href="www.facebook.com" target="_blank" ><img src="../assets/facebook.jpeg" alt="facebook"></a>
-            <a href="www.twitter.com" target="_blank" ><img src="../assets/twitter.png" alt="twitter"></a>
-          </div>
-          <p>Designed and developed by Haraprasad Mahapatra</p>
-          <p><a href="https://www.linkedin.com/in/haraprasad-mahapatra-549a1a280/"> Click here to Connect </a></p>
+            <p>&copy; 2025 ZestyCart. All Rights reserved</p>
+            <div class="social-icons">
+                <a href="www.instagram.com" target="_blank"><img src="../assets/instagram.jpeg" alt="instagram"></a>
+                <a href="www.facebook.com" target="_blank"><img src="../assets/facebook.jpeg" alt="facebook"></a>
+                <a href="www.twitter.com" target="_blank"><img src="../assets/twitter.png" alt="twitter"></a>
+            </div>
+            <p>Designed and developed by Haraprasad Mahapatra</p>
+            <p><a href="https://www.linkedin.com/in/haraprasad-mahapatra-549a1a280/"> Click here to Connect </a></p>
         </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -99,11 +102,11 @@
             location.reload();
         })
 
-        document.getElementById('order_bttn').addEventListener("click",function (){
-            document.getElementById('msg').style.display="inline-block"
-            document.getElementById('msg').innerText="Order placed succesfully , You can now download your reciept";
-            document.getElementById('receipt').style.display="inline-block";
-            document.getElementById('order_bttn').disabled=true;
+        document.getElementById('order_bttn').addEventListener("click", function () {
+            document.getElementById('msg').style.display = "inline-block"
+            document.getElementById('msg').innerText = "Order placed succesfully , You can now download your reciept";
+            document.getElementById('receipt').style.display = "inline-block";
+            document.getElementById('order_bttn').disabled = true;
         })
 
         document.getElementById('receipt').addEventListener("click", function () {
@@ -132,21 +135,21 @@
             cart.forEach((item, index) => {
                 doc.setFontSize(12);
                 doc.text(`Item ${index + 1} : ${item.name}`, 20, y);
-                doc.text(`Price : ${item.price}`,20,y+6);
-                doc.text(`Quantity:${item.quantity}`,20,y+6+6);
-                doc.text(`Subtotal : ${item.price*item.quantity}`,20,y+6+6+6);
-                total+=item.price*item.quantity;
-                y=y+38;
+                doc.text(`Price : ${item.price}`, 20, y + 6);
+                doc.text(`Quantity:${item.quantity}`, 20, y + 6 + 6);
+                doc.text(`Subtotal : ${item.price * item.quantity}`, 20, y + 6 + 6 + 6);
+                total += item.price * item.quantity;
+                y = y + 38;
             })
             doc.setLineWidth(0.5);
-            doc.line(20,y,190,y);
-            y+=10;
+            doc.line(20, y, 190, y);
+            y += 10;
             doc.setFontSize(15);
-            doc.text(`Total Amount : Rs ${total}`,20,y);
-            y+=30;
+            doc.text(`Total Amount : Rs ${total}`, 20, y);
+            y += 30;
 
             doc.setFontSize(14);
-            doc.text("thankyou for Ordering with ZestyCart!!",105,y,null,null,"center");
+            doc.text("thankyou for Ordering with ZestyCart!!", 105, y, null, null, "center");
             doc.save("ZestyCart-Receipt");
 
             localStorage.removeItem('cart');
